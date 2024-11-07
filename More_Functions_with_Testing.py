@@ -127,8 +127,8 @@ def test_is_prime():
 def test_is_anagram():
     assert is_anagram("bored", "robed") == True
     assert is_anagram("dusty", "study") == True
-    assert is_anagram("hello", "bello") == False
-    assert is_anagram("hello", "helloo") == False
+    assert is_anagram("hello", "mellow") == False
+    assert is_anagram("player", "slayer") == False
     assert is_anagram_set(["chants", "snatch", "stanch"]) == True
     assert is_anagram_set(["the eyes", "they see"]) == False
     assert is_anagram_set(["william shakespeare", "i am a weakish speller"]) == True
