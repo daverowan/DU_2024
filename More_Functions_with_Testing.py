@@ -2,7 +2,7 @@ def is_prime(number):
     if number <= 1:
         return False  # Numbers less than or equal to 1 are not prime
     if number <= 3:
-        return True   # 2 and 3 are prime
+        return True   # Direct check for 2 and 3, which are prime
     if number % 2 == 0:
         return False  # Exclude all even numbers greater than 2
     for i in range(3, int(number**0.5) + 1, 2):
