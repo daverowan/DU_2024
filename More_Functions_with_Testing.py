@@ -1,0 +1,173 @@
+def is_prime(number):
+    if number <= 1:
+        return False
+    if number <= 2 or number % 2 == 1:
+        return True
+    return False
+
+def generate_primes(n_max):
+    """
+    Generate a list of prime numbers up to n_max using the sieve of Eratosthenes.
+
+    Reference: https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+    """
+    sieve = [True] * (n_max + 1)
+    sieve[0:2] = [False, False]  # 0 and 1 are not primes
+    for i in range(2, int(n_max**0.5) + 1):
+        if sieve[i]:
+            for j in range(i * i, n_max + 1, i):
+                sieve[j] = False  # Mark multiples of i as non-prime
+    primes = [i for i, prime in enumerate(sieve) if prime]
+
+    return primes
+
+
+def is_anagram(word_one, word_two):
+    if len(word_one) != len(word_two):
+        return False
+    if word_one == word_two:
+        return True
+
+    for letter in word_one:
+        if letter not in word_two:
+            return False
+
+    return True
+
+def is_anagram_set(anagram_list):
+    for i in range(len(anagram_list) - 1):
+        if is_anagram(anagram_list[i], anagram_list[i + 1]):
+            print(anagram_list[i], anagram_list[i + 1])
+        else:
+            print("False:", anagram_list[i], anagram_list[i + 1])
+            return False
+
+    return True
+
+
+def is_palindrome(word):
+    return word == word[::-1]
+
+
+def zigzag(s, k):
+    """
+    Arrange a string into a zigzag pattern across k lines.
+
+    Parameters:
+    s (str): The input string to be converted into zigzag pattern.
+    k (int): The number of lines to span the zigzag pattern.
+
+    Returns:
+    str: A string representing the zigzag pattern.
+
+    Example:
+    >>> print(zigzag("ZigZagString", 3))
+    Z   a   r
+     i Z g t i g
+      g   S   n
+    """
+    if k == 1 or k >= len(s):
+        return s  # No zigzag needed (return original input)
+
+    # Initialize variables
+    rows = [""] * k
+    row = 0  # Current row
+    step = 1  # Direction of traversal
+    pos = 0  # Current position in the original string
+
+    # List to keep track of the current length of each row
+    row_lengths = [0] * k
+
+    for char in s:
+        # Calculate spaces needed before the character
+        spaces_needed = pos - row_lengths[row]
+        rows[row] += " " * spaces_needed + char
+        row_lengths[row] = pos + 1  # Update the length of the current row
+
+        # Move to the next row
+        if row == 0:
+            step = 1
+        elif row == k - 1:
+            step = -1
+        row += step
+        pos += 1
+
+    # Join the rows with newline characters
+    result = "\n".join(row.rstrip() for row in rows)
+    return result
+
+
+def test_is_prime():
+    prime = generate_primes(7500)
+    prime_set = set(prime)
+    prime_sm_list = 2, 3, 5, 7, 11, 13, 17, 19, 23, 29
+
+    assert is_prime(-1) == False
+    assert is_prime(0) == False
+    assert is_prime(1) == False
+    assert is_prime(2) == True
+    assert is_prime(3) == True
+    assert is_prime(4) == False
+    assert is_prime(5) == True
+    assert is_prime(9) == False
+    assert is_prime(97) == True
+    assert is_prime(7500) == False
+
+    for n in prime_sm_list:
+        assert is_prime(n) == True
+    for n in prime:
+        assert is_prime(n) == (n in prime_set)
+
+
+def test_is_anagram():
+    assert is_anagram("bored", "robed") == True
+    assert is_anagram("dusty", "study") == True
+    assert is_anagram("hello", "bello") == False
+    assert is_anagram("hello", "helloo") == False
+    assert is_anagram_set(["chants", "snatch", "stanch"]) == True
+    assert is_anagram_set(["the eyes", "they see"]) == False
+    assert is_anagram_set(["william shakespeare", "i am a weakish speller"]) == True
+    assert is_anagram_set(["footballer", "cyclist", "touchdown"]) == False
+    assert is_anagram_set([]) == True
+
+
+def test_is_anagram_set():
+
+
+def test_is_palindrome():
+    assert is_palindrome("civic") == True
+    assert is_palindrome("madam") == True
+    assert is_palindrome("wife") == False
+    assert is_palindrome("radar") == True
+    assert is_palindrome("modem") == False
+
+
+def test_zigzag():
+    """
+    Test cases for the zigzag function.
+    """
+    # Test Case 1: Basic functionality with k=3 (should return expected output)
+    input_string = "ZigZagString"
+    k = 3
+    expected_output = "Z   a   r\n i Z g t i g\n  g   S   n"
+    assert zigzag(input_string, k) == expected_output, "Test 1 Passed"
+
+    # Test Case 2: Edge case with k greater than length of string (should return original string)
+    input_string = "hail"
+    k = 5
+    expected_output = "hail"
+    assert zigzag(input_string, k) == expected_output, "Test 3 Failed"
+
+    # Test Case 3: Edge case with k=1 (should return the original string)
+    input_string = "JeffBezos"
+    k = 1
+    expected_output = "JeffBezos"
+    assert zigzag(input_string, k) == expected_output, "Test 2 Failed"
+
+    # Test Case 4: Empty string input (should return empty string)
+    input_string = ""
+    k = 1
+    expected_output = ""
+    assert zigzag(input_string, k) == expected_output, "Test 4 Failed"
+
+
