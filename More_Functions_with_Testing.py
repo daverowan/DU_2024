@@ -61,7 +61,7 @@ def zigzag(s, k):
     str: A string representing the zigzag pattern.
 
     Example:
-    >>> print(zigzag("ZigZagString", 3))
+    >>> print(zigzagstring("ZigZagString", k=3))
     Z   a   r
      i Z g t i g
       g   S   n
