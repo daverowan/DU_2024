@@ -136,9 +136,6 @@ def test_is_anagram():
     assert is_anagram_set([]) == True
 
 
-def test_is_anagram_set():
-    assert_()
-
 def test_is_palindrome():
     assert is_palindrome("civic") == True
     assert is_palindrome("madam") == True
