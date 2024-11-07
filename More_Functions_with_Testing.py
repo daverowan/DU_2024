@@ -1,9 +1,14 @@
 def is_prime(number):
     if number <= 1:
-        return False
-    if number <= 2 or number % 2 == 1:
-        return True
-    return False
+        return False  # Numbers less than or equal to 1 are not prime
+    if number <= 3:
+        return True   # 2 and 3 are prime
+    if number % 2 == 0:
+        return False  # Exclude all even numbers greater than 2
+    for i in range(3, int(number**0.5) + 1, 2):
+        if number % i == 0:
+            return False  # If number is divisible by any number other than 1 and itself, it's not prime
+    return True  # If no divisors were found, it is prime
 
 def generate_primes(n_max):
     """
@@ -132,7 +137,7 @@ def test_is_anagram():
 
 
 def test_is_anagram_set():
-
+    assert_()
 
 def test_is_palindrome():
     assert is_palindrome("civic") == True
