@@ -100,7 +100,7 @@ def zigzag(s, k):
 def test_is_prime():
     prime = generate_primes(7500)
     prime_set = set(prime)
-    prime_sm_list = 2, 3, 5, 7, 11, 13, 17, 19, 23, 29
+    prime_sm_list = 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97
 
     assert is_prime(-1) == False
     assert is_prime(0) == False
