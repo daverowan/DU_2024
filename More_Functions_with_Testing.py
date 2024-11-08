@@ -220,4 +220,7 @@ def test_zigzag():
     expected_output = ""
     assert zigzag(input_string, k) == expected_output, "Test 4 Failed"
 
-
+    test_is_prime()
+    test_is_anagram()
+    test_is_palindrome()
+    test_zigzag()
