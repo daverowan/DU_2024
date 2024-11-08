@@ -28,6 +28,8 @@ def generate_primes(n_max):
 
 
 def is_anagram(word_one, word_two):
+    word_one = word_one.lower()
+    word_two = word_two.lower ()
     if len(word_one) != len(word_two):
         return False
     if word_one == word_two:
@@ -40,18 +42,22 @@ def is_anagram(word_one, word_two):
     return True
 
 def is_anagram_set(anagram_list):
-    for i in range(len(anagram_list) - 1):
-        if is_anagram(anagram_list[i], anagram_list[i + 1]):
-            print(anagram_list[i], anagram_list[i + 1])
+    # Normalize the words in the list to lowercase
+    normalized_list = [word.lower() for word in anagram_list]
+
+    for i in range(len(normalized_list) - 1):
+        if is_anagram(normalized_list[i], normalized_list[i + 1]):
+            print(anagram_list[i], anagram_list[i + 1])  # Print original words
         else:
-            print("False:", anagram_list[i], anagram_list[i + 1])
+            print("False:", anagram_list[i], anagram_list[i + 1])  # Print original words
             return False
 
     return True
 
 
 def is_palindrome(word):
-    return word == word[::-1]
+    normalized_word = word.lower()  # Convert to lowercase
+    return normalized_word == normalized_word[::-1]
 
 
 def zigzag(s, k):
@@ -158,13 +164,13 @@ def test_zigzag():
     input_string = "hail"
     k = 5
     expected_output = "hail"
-    assert zigzag(input_string, k) == expected_output, "Test 3 Failed"
+    assert zigzag(input_string, k) == expected_output, "Test 2 Failed"
 
     # Test Case 3: Edge case with k=1 (should return the original string)
     input_string = "JeffBezos"
     k = 1
     expected_output = "JeffBezos"
-    assert zigzag(input_string, k) == expected_output, "Test 2 Failed"
+    assert zigzag(input_string, k) == expected_output, "Test 3 Failed"
 
     # Test Case 4: Empty string input (should return empty string)
     input_string = ""
