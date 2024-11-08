@@ -19,7 +19,7 @@ def all_pairs(x, y):
     pairs = []
     for item_x in x:
         for item_y in y:
-            if item_x != item_y:  # Ensure elements are distinct
+            if item_x != item_y:
                 pairs.append((item_x, item_y))
     return pairs
 
@@ -42,9 +42,7 @@ def adds_to_target(target, A):
     seen = set()
     for number in A:
         required = target - number
-        # Check if the required number is in the seen set
         if required in seen:
-            # Ensure they are distinct values
             if required != number or A.count(number) > 1:
                 return True
         seen.add(number)
@@ -131,36 +129,32 @@ class TestFunctions(unittest.TestCase):
             print(f"Error: Test list_to_dict([0]) - Expected {expected}, got {result}")
 
     def test_invert_dict(self):
-        """Testing function for invert_dict."""
-        # Test with a simple dictionary
         result = invert_dict({1: 2, 2: 3})
         expected = {2: 1, 3: 2}
         if result != expected:
             print(f"Error: Test invert_dict({{1: 2, 2: 3}}) - Expected {expected}, got {result}")
 
-        # Test with an empty dictionary
+
         result = invert_dict({})
         expected = {}
         if result != expected:
             print(f"Error: Test invert_dict({{}}) - Expected {expected}, got {result}")
 
-        # Test with duplicate values
+
         result = invert_dict({'a': 1, 'b': 2, 'c': 1})
         expected = {1: 'c', 2: 'b'}
         if result != expected:
             print(f"Error: Test invert_dict({{'a': 1, 'b': 2, 'c': 1}}) - Expected {expected}, got {result}")
 
-        # Test with unique values
+
         result = invert_dict({'x': 10, 'y': 20})
         expected = {10: 'x', 20: 'y'}
         if result != expected:
             print(f"Error: Test invert_dict({{'x': 10, 'y': 20}}) - Expected {expected}, got {result}")
 
-        # Test with integer keys and string values
+
         result = invert_dict({1: 'one', 2: 'two'})
         expected = {'one': 1, 'two': 2}
         if result != expected:
             print(f"Error: Test invert_dict({{1: 'one', 2: 'two'}}) - Expected {expected}, got {result}")
-
-        print("All test cases for invert_dict passed.")
 
