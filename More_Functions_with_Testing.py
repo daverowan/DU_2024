@@ -179,8 +179,11 @@ def test_is_anagram():
     assert is_anagram("dusty", "study") == True
     assert is_anagram("hello", "mellow") == False
     assert is_anagram("player", "slayer") == False
+    assert is_anagram("elbow", "below") == True
     assert is_anagram_set(["chants", "snatch", "stanch"]) == True
     assert is_anagram_set(["footballer", "cyclist", "touchdown"]) == False
+    assert is_anagram_set(["arm", "mar", "ram"]) == True
+    assert is_anagram_set(["actress", "casters", "masters"]) == False
     assert is_anagram_set([]) == True
 
 
