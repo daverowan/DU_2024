@@ -216,4 +216,7 @@ def test_max_partition():
         print(e)
 
 if __name__ == "__main__":
+    test_mask_word()
+    test_partition()
+    test_max_partition()
     play_game()
