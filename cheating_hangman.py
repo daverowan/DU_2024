@@ -54,15 +54,7 @@ def max_partition(partitions):
 
 
 def read_words(file_path="C:\\Users\\Dave Rowan\\Documents\\words.txt", length=None):
-    """Read words from a file and filter by the specified length.
-
-    Args:
-        file_path (str): The path to the words file.
-        length (int): The desired word length. If None, all words are returned.
-
-    Returns:
-        set: A set of words of the specified length.
-    """
+    """Read words from a file and filter by the specified length."""
     with open(file_path, "r") as file:
         if length:
             return {line.strip() for line in file if len(line.strip()) == length}
