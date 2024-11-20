@@ -32,7 +32,8 @@ def partition(words, guessed):
     return partitions
 
 def max_partition(partitions):
-    """Returns the hint for the largest partite set.  Args:
+    """Returns the hint for the largest partite set.
+    Args:
         partitions (dict): partitions from partition function
     Returns:
         str: hint for the largest partite set
@@ -60,11 +61,9 @@ def max_partition(partitions):
 
 def read_words(file_path="C:\\Users\\Dave Rowan\\Documents\\words.txt", length=None):
     """Read words from a file and filter by the specified length.
-
     Args:
         file_path (str): The path to the words file.
         length (int): The desired word length. If None, all words are returned.
-
     Returns:
         set: A set of words of the specified length.
     """
@@ -216,7 +215,4 @@ def test_max_partition():
         print(e)
 
 if __name__ == "__main__":
-    test_mask_word()
-    test_partition()
-    test_max_partition()
     play_game()
